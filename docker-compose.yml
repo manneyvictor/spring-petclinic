@@ -1,15 +1,19 @@
-  spring-petclinic:
-    image: spring-petclinic:manney
-    ports:
-      - "8080:8080"
-    links:
-      - mysqldb-petclinic
-  
-  mysqldb-petclinic:
+ mysqldb-petclinic:
     image: mysql:5.7
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=petclinic
       - MYSQL_DATABASE=petclinic
+
+ spring-petclinic:
+    image: manneyvictor/spring-petclinic:manney
+    ports:
+      - "8080:8080"
+    links:
+      - mysqldb-petclinic
+  
+
+
+
 
