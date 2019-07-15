@@ -8,7 +8,10 @@ Em breve, um job para realizar deploy nas imagens armazenadas no Nexus.
 Para utilizar a instalação default, basta rodar o docker run acrescentando o parametro -e 'JENKINS_HOME=/var/jenkins_home' -e 'HOME=/var/jenkins_home';
 
 Exemplo: 
-docker run -e 'JENKINS_HOME=/var/jenkins_home' -e 'HOME=/var/jenkins_home'  --name jenkins -h jenkins-ci_cd -p 8080:8080 -p 50000:50000 -d jenkins:acc;
+docker run -e 'JENKINS_HOME=/var/jenkins_home' -e 'HOME=/var/jenkins_home' --name jenkins -h jenkins -p 8080:8080 -p 50000:50000 -d jenkins:acc;
 
 
 -SonarQube: Imagem utiliza usuário e senha: admin;
+
+Exemplo:
+docker run --names sonar -p 9000:9000 -p 9092:9092 -d sonar:acc --link jenkins:jenk
