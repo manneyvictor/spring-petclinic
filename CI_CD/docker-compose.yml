@@ -14,6 +14,5 @@ services:
     ports: 
       - "9000:9000"
       - "9092:9092"
-  links:
-    - sonar
+    depends_on:
     - jenkins
