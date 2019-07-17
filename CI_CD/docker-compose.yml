@@ -5,14 +5,24 @@ services:
     ports: 
       - "8080:8080"
       - "50000:50000"
-    environment:
-      - JENKINS_HOME=/var/jenk_home
-      - HOME=/var/jenk_home
-    
+    volumes:
+      - "jenkis-data:/var/jenkis_home"
+    depends_on:
+      - sonar
+      - nexus    
   sonar:
     image: manneyvictor/sonar:acc
     ports: 
       - "9000:9000"
       - "9092:9092"
     depends_on:
-    - jenkins
+      - jenkins
+  nexus:
+    image: manneyvictor/nexus:acc
+    ports:
+      - "8081:8081"
+      - "8083:8083"
+    volumes:
+      - "nexus-repo:/repositorio-nexus
+    depends_on:
+      - jenkins
