@@ -1,19 +1,20 @@
- mysqldb-petclinic:
-    image: mysql:5.7
-    ports:
+version: "3.7"
+services:
+  mysqldb-pet:
+    image: mysql5.7
+    ports: 
       - "3306:3306"
+    volumes:
+      - "mysqldb-pet:/var/lib/mysql"
+    depends_on:
+      - app-petclinic
     environment:
-      - MYSQL_ROOT_PASSWORD=petclinic
-      - MYSQL_DATABASE=petclinic
-
- spring-petclinic:
-    image: manneyvictor/spring-petclinic:manney
+      - JENKINS_HOME=/var/jenk_home
+      - HOME=/var/jenk_home 
+      
+  app-petclinic:
+    image: manneyvictor/app-pet:acc
     ports:
       - "8080:8080"
-    links:
-      - mysqldb-petclinic
-  
-
-
-
-
+    depends_on:
+      - mysqldb-pet
