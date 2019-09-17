@@ -7,10 +7,7 @@ services:
     volumes:
       - "mysqldb-pet:/var/lib/mysql"
     depends_on:
-      - app-petclinic
-    environment:
-      - JENKINS_HOME=/var/jenk_home
-      - HOME=/var/jenk_home 
+      - app-petclinic 
       
   app-petclinic:
     image: manneyvictor/app-pet:acc
