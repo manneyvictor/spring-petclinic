@@ -13,7 +13,7 @@ services:
     ports:
      - "3306:3306"
   petclinic:
-    image: petclinic:v1
+    image: manneyvictor/petclinic:v1
     ports:
      - "80:8080"
     links:
