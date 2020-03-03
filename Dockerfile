@@ -1,4 +1,3 @@
-From openjdk:8
-#Após realizar o build com o maven, executar passo abaixo.
-copy ./target/*.jar petclinic.jar
-CMD ["java","-Dspring.profiles.active=mysql", "-jar", "petclinic.jar"]
+From openjdk:8                                                                                                                                              WORKDIR /home/petclinic/
+COPY ./target/spring-boot-petclinic-mysql.jar /home/petclinic/petclinic.jar
+CMD ["java","-Dspring.profiles.active=mysql", "-jar", "/home/petclinic/petclinic.jar"]
